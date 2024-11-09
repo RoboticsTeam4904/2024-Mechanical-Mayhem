@@ -20,6 +20,11 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorController;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+
 import java.io.File;
 // TODO: west coast
 // import org.usfirst.frc4904.robot.subsystems.SwerveSubsystem;
@@ -47,14 +52,11 @@ public class RobotMap {
         // 2023 robot constants // TODO: update ports for swerve
         public static class CANMotor {
 
-            public static final int FRONT_LEFT_DRIVE = 1;
-            public static final int FRONT_LEFT_TURN = 5;
-            public static final int FRONT_RIGHT_DRIVE = 2;
-            public static final int FRONT_RIGHT_TURN = 6;
-            public static final int BACK_LEFT_DRIVE = 3;
-            public static final int BACK_LEFT_TURN = 7;
-            public static final int BACK_RIGHT_DRIVE = 4;
-            public static final int BACK_RIGHT_TURN = 8;
+            public static final int FRONT_LEFT_MOTOR=-1;
+            public static final int FRONT_RIGHT_MOTOR=-1;
+            public static final int BACK_LEFT_MOTOR=-1;
+            public static final int BACK_RIGHT_MOTOR=-1;
+
         }
 
         public static class PWM {
@@ -150,7 +152,7 @@ public class RobotMap {
         public static AHRS navx;
 
         // public static RobotUDP robotUDP;
-
+        public static DifferentialDrive chassis;
         // TODO: west coast
         // public static SwerveSubsystem chassis;
     }
@@ -193,6 +195,16 @@ public class RobotMap {
     }
 
     public RobotMap() {
+        MotorController m_frontLeft = new CANTalonFX(1);
+        MotorController m_rearLeft = new CANTalonFX(2);
+        MotorControllerGroup m_left = new MotorControllerGroup(m_frontLeft, m_rearLeft);
+
+        MotorController m_frontRight = new CANTalonFX(3);
+        MotorController m_rearRight = new CANTalonFX(4);
+        MotorControllerGroup m_right = new MotorControllerGroup(m_frontRight, m_rearRight);
+
+        DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+       
         // TODO: west coast
         // Component.chassis = new SwerveSubsystem(
         //     new File(Filesystem.getDeployDirectory(), "swerve"),
