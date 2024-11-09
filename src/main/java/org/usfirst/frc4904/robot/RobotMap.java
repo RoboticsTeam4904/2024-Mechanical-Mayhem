@@ -21,7 +21,8 @@ import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.SerialPort;
 import java.io.File;
-import org.usfirst.frc4904.robot.subsystems.SwerveSubsystem;
+// TODO: west coast
+// import org.usfirst.frc4904.robot.subsystems.SwerveSubsystem;
 import org.usfirst.frc4904.standard.custom.controllers.CustomCommandJoystick;
 import org.usfirst.frc4904.standard.custom.controllers.CustomCommandXbox;
 import org.usfirst.frc4904.standard.custom.motorcontrollers.CANTalonFX;
@@ -29,8 +30,8 @@ import org.usfirst.frc4904.standard.custom.motorcontrollers.CANTalonFX;
 
 import org.usfirst.frc4904.standard.custom.motorcontrollers.CustomCANSparkMax;
 import org.usfirst.frc4904.standard.subsystems.motor.SparkMaxMotorSubsystem;
-import swervelib.SwerveDrive;
-import swervelib.parser.SwerveParser;
+// import swervelib.SwerveDrive;
+// import swervelib.parser.SwerveParser;
 
 public class RobotMap {
 
@@ -150,7 +151,8 @@ public class RobotMap {
 
         // public static RobotUDP robotUDP;
 
-        public static SwerveSubsystem chassis;
+        // TODO: west coast
+        // public static SwerveSubsystem chassis;
     }
 
     public static class NetworkTables {
@@ -191,12 +193,13 @@ public class RobotMap {
     }
 
     public RobotMap() {
-        Component.chassis = new SwerveSubsystem(
-            new File(Filesystem.getDeployDirectory(), "swerve"),
-            360,
-            .0473,
-            4.5
-        );
+        // TODO: west coast
+        // Component.chassis = new SwerveSubsystem(
+        //     new File(Filesystem.getDeployDirectory(), "swerve"),
+        //     360,
+        //     .0473,
+        //     4.5
+        // );
 
         // Component.navx = new AHRS(SerialPort.Port.kMXP);
 

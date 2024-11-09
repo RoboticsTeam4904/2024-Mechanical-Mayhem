@@ -33,8 +33,7 @@ import org.usfirst.frc4904.robot.RobotMap.Component;
 // import java.util.function.BooleanSupplier;
 // import java.util.function.DoubleSupplier;
 //import java.util.function.Supplier;
-
-import org.usfirst.frc4904.robot.humaninterface.drivers.SwerveGain;
+import org.usfirst.frc4904.robot.humaninterface.drivers.NathanGain;
 import org.usfirst.frc4904.robot.humaninterface.operators.DefaultOperator;
 import org.usfirst.frc4904.standard.CommandRobotBase;
 //import org.usfirst.frc4904.standard.CommandRobotBase;
@@ -47,7 +46,7 @@ public class Robot extends CommandRobotBase {
     // private final RobotContainer2 donttouchme = new RobotContainer2(RobotMap.Component.frontLeftWheelTalon, RobotMap.Component.backLeftWheelTalon, RobotMap.Component.frontRightWheelTalon, RobotMap.Component.backRightWheelTalon, RobotMap.Component.navx);
     // private SendableChooser<Supplier<Command>> autonomousCommand = new SendableChooser<Supplier<Command>>();
 
-    private final Driver driver = new SwerveGain();
+    private final Driver driver = new NathanGain();
     private final org.usfirst.frc4904.standard.humaninput.Operator operator = new DefaultOperator();
     private final RobotMap map = new RobotMap();
 
@@ -84,13 +83,14 @@ public class Robot extends CommandRobotBase {
         //             () -> driver.getX() != 0 || driver.getY() != 0 || driver.getTurnSpeed() != 0
         //         )
         //     ));
-        RobotMap.Component.chassis.setDefaultCommand(
-            RobotMap.Component.chassis.driveCommand(
-                () -> driver.getY(),
-                () -> driver.getX(),
-                () -> driver.getTurnSpeed()
-            )
-        );
+        // TODO: replace with west coast
+        // RobotMap.Component.chassis.setDefaultCommand(
+            // RobotMap.Component.chassis.driveCommand(
+                // () -> driver.getY(),
+                // () -> driver.getX(),
+                // () -> driver.getTurnSpeed()
+            // )
+        // );
     }
 
     @Override
@@ -99,10 +99,11 @@ public class Robot extends CommandRobotBase {
             "button",
             RobotMap.HumanInput.Driver.turnJoystick.button1.getAsBoolean()
         );
-        SmartDashboard.putNumber(
-            "max angular velocity",
-            RobotMap.Component.chassis.swerveDrive.getMaximumAngularVelocity()
-        );
+        // SmartDashboard.putNumber(
+        //     "max angular velocity"
+            // TODO: west coast
+            // RobotMap.Component.chassis.swerveDrive.getMaximumAngularVelocity()
+        // );
         // //various logging can go here
         // //TODO: getAbsolutePosition() MIGHT NOT WORK OR BE IN RIGHT UNITS!
         // SmartDashboard.putNumber("FL angle-1", RobotMap.Component.FLturnEncoder.getAbsolutePosition());
@@ -135,7 +136,8 @@ public class Robot extends CommandRobotBase {
     @Override
     public void autonomousInitialize() {
         // start autons here
-        RobotMap.Component.chassis.getAutonomousCommand("line", true).schedule();
+        // TODO: west coast
+        // RobotMap.Component.chassis.getAutonomousCommand("line", true).schedule();
     }
 
     @Override
