@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
-
+import java.awt.Component;
 import java.io.File;
 // TODO: west coast
 // import org.usfirst.frc4904.robot.subsystems.SwerveSubsystem;
@@ -35,6 +35,7 @@ import org.usfirst.frc4904.standard.custom.motorcontrollers.CANTalonFX;
 
 import org.usfirst.frc4904.standard.custom.motorcontrollers.CustomCANSparkMax;
 import org.usfirst.frc4904.standard.subsystems.motor.SparkMaxMotorSubsystem;
+
 // import swervelib.SwerveDrive;
 // import swervelib.parser.SwerveParser;
 
@@ -44,19 +45,18 @@ public class RobotMap {
 
         public static class HumanInput {
 
-            public static final int xyJoystickPort = 0;
-            public static final int zJoystickPort = 1;
+            public static final int leftJoystickPort = 0;
+            public static final int rightJoystickPort = 1;
             public static final int joystick = 2;
         }
 
         // 2023 robot constants // TODO: update ports for swerve
         public static class CANMotor {
 
-            public static final int FRONT_LEFT_MOTOR=-1;
-            public static final int FRONT_RIGHT_MOTOR=-1;
-            public static final int BACK_LEFT_MOTOR=-1;
-            public static final int BACK_RIGHT_MOTOR=-1;
-
+            public static final int FRONT_LEFT_MOTOR = -1;
+            public static final int FRONT_RIGHT_MOTOR = -1;
+            public static final int BACK_LEFT_MOTOR = -1;
+            public static final int BACK_RIGHT_MOTOR = -1;
         }
 
         public static class PWM {
@@ -152,7 +152,7 @@ public class RobotMap {
         public static AHRS navx;
 
         // public static RobotUDP robotUDP;
-        public static DifferentialDrive chassis;
+        public static TankDrive chassis;
         // TODO: west coast
         // public static SwerveSubsystem chassis;
     }
@@ -184,8 +184,8 @@ public class RobotMap {
         public static class Driver {
 
             public static CustomCommandXbox xbox;
-            public static CustomCommandJoystick xyJoystick;
-            public static CustomCommandJoystick turnJoystick;
+            public static CustomCommandJoystick leftJoystick;
+            public static CustomCommandJoystick rightJoystick;
         }
 
         public static class Operator {
@@ -204,7 +204,7 @@ public class RobotMap {
         MotorControllerGroup m_right = new MotorControllerGroup(m_frontRight, m_rearRight);
 
         DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
-       
+        Component.chassis = new TankDrive(m_drive);
         // TODO: west coast
         // Component.chassis = new SwerveSubsystem(
         //     new File(Filesystem.getDeployDirectory(), "swerve"),
@@ -215,12 +215,12 @@ public class RobotMap {
 
         // Component.navx = new AHRS(SerialPort.Port.kMXP);
 
-        HumanInput.Driver.xyJoystick = new CustomCommandJoystick(
-            Port.HumanInput.xyJoystickPort,
+        HumanInput.Driver.leftJoystick = new CustomCommandJoystick(
+            Port.HumanInput.leftJoystickPort,
             0.01
         );
-        HumanInput.Driver.turnJoystick = new CustomCommandJoystick(
-            Port.HumanInput.zJoystickPort,
+        HumanInput.Driver.rightJoystick = new CustomCommandJoystick(
+            Port.HumanInput.rightJoystickPort,
             0.01
         );
         // HumanInput.Operator.joystick = new CustomCommandJoystick(Port.HumanInput.joystick, 0.01);

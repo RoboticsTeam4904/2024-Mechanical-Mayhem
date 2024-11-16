@@ -44,9 +44,9 @@ public class Robot extends CommandRobotBase {
 
     // private final RobotMap map = new RobotMap();
     // private final RobotContainer2 donttouchme = new RobotContainer2(RobotMap.Component.frontLeftWheelTalon, RobotMap.Component.backLeftWheelTalon, RobotMap.Component.frontRightWheelTalon, RobotMap.Component.backRightWheelTalon, RobotMap.Component.navx);
-    // private SendableChooser<Supplier<Command>> autonomousCommand = new SendableChooser<Supplier<Command>>();
+    // private SendableChooser<Suppli er<Command>> autonomousCommand = new SendableChooser<Supplier<Command>>();
 
-    private final Driver driver = new NathanGain();
+    private final NathanGain driver = new NathanGain(); //maybe breaks stuff
     private final org.usfirst.frc4904.standard.humaninput.Operator operator = new DefaultOperator();
     private final RobotMap map = new RobotMap();
 
@@ -84,25 +84,24 @@ public class Robot extends CommandRobotBase {
         //         )
         //     ));
         // TODO: replace with west coast
-        // RobotMap.Component.chassis.setDefaultCommand(
-            // RobotMap.Component.chassis.driveCommand(
-                // () -> driver.getY(),
-                // () -> driver.getX(),
-                // () -> driver.getTurnSpeed()
-            // )
-        // );
+        RobotMap.Component.chassis.setDefaultCommand(
+            RobotMap.Component.chassis.c_TankDrive(
+                () -> driver.getLeftSpeed(),
+                () -> driver.getRightSpeed()
+            )
+        );
     }
 
     @Override
     public void teleopExecute() {
         SmartDashboard.putBoolean(
             "button",
-            RobotMap.HumanInput.Driver.turnJoystick.button1.getAsBoolean()
+            RobotMap.HumanInput.Driver.rightJoystick.button1.getAsBoolean()
         );
         // SmartDashboard.putNumber(
         //     "max angular velocity"
-            // TODO: west coast
-            // RobotMap.Component.chassis.swerveDrive.getMaximumAngularVelocity()
+        // TODO: west coast
+        // RobotMap.Component.chassis.swerveDrive.getMaximumAngularVelocity()
         // );
         // //various logging can go here
         // //TODO: getAbsolutePosition() MIGHT NOT WORK OR BE IN RIGHT UNITS!
