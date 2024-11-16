@@ -4,8 +4,9 @@ deafault code for the 2024 mechanical ma-yhem competition hosted by team 766 ma-
 we are currentyl waiting for fab to do fab stuff
 
 **patch notes:**
-- deleted swerve
 - drivetrain code exists now
+- drivetrain code sorta kinda not really works now (needs testing)
+- deleted swerve
 - fixed expresions
 - removed herobrine
 
