@@ -23,14 +23,14 @@ public class NathanGain extends Driver { //ALL NathanGain JOYSTICKS OUTPUT FROM 
 
     public double getLeftSpeed() {
         double raw = RobotMap.HumanInput.Driver.leftJoystick.getY();
-        DriverStation.reportWarning("left speed: " + raw);
+        DriverStation.reportWarning("left speed: " + raw, false);
 
         return scaleGain(raw, SPEED_EXP);
     }
 
     public double getRightSpeed() {
         double raw = RobotMap.HumanInput.Driver.rightJoystick.getY();
-        DriverStation.reportWarning("right speed: " + raw);
+        DriverStation.reportWarning("right speed: " + raw, false);
 
         return scaleGain(raw, TURN_EXP);
     }
