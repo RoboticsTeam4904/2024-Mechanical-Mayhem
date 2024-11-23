@@ -1,8 +1,8 @@
 package org.usfirst.frc4904.robot.humaninterface.drivers;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import org.usfirst.frc4904.robot.RobotMap;
-import org.usfirst.frc4904.standard.LogKitten;
 import org.usfirst.frc4904.standard.humaninput.Driver;
 
 public class NathanGain extends Driver { //ALL NathanGain JOYSTICKS OUTPUT FROM -1 TO 1
@@ -23,14 +23,14 @@ public class NathanGain extends Driver { //ALL NathanGain JOYSTICKS OUTPUT FROM 
 
     public double getLeftSpeed() {
         double raw = RobotMap.HumanInput.Driver.leftJoystick.getY();
-        LogKitten.i("left speed: " + raw);
+        DriverStation.reportWarning("left speed: " + raw);
 
         return scaleGain(raw, SPEED_EXP);
     }
 
     public double getRightSpeed() {
         double raw = RobotMap.HumanInput.Driver.rightJoystick.getY();
-        LogKitten.i("right speed: " + raw);
+        DriverStation.reportWarning("right speed: " + raw);
 
         return scaleGain(raw, TURN_EXP);
     }
