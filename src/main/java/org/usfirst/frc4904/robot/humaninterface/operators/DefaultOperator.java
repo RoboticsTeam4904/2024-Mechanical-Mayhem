@@ -25,6 +25,9 @@ public class DefaultOperator extends Operator {
         joystick.button4.onTrue(RobotMap.Component.take.c_outtakeFront());
         joystick.button5.onTrue(RobotMap.Component.take.c_stop());
         joystick.button1.onTrue(RobotMap.Component.take.c_outtakeBack());
+        joystick.button3.onFalse(RobotMap.Component.take.c_stop());
+        joystick.button4.onFalse(RobotMap.Component.take.c_stop());
+        joystick.button1.onFalse(RobotMap.Component.take.c_stop());
         // manual extension and retraction
         // joystick.button3.onTrue(RobotMap.Component.arm.armExtensionSubsystem.c_controlVelocity(() -> -0.45));
         // joystick.button3.onFalse(RobotMap.Component.arm.armExtensionSubsystem.c_controlVelocity(() -> 0));
