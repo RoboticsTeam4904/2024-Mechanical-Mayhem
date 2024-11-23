@@ -55,12 +55,12 @@ public class RobotMap {
         // TODO: update ports for swerve
         public static class CANMotor {
 
-            public static final int FRONT_LEFT_MOTOR = 10;
-            public static final int FRONT_RIGHT_MOTOR = 11;
-            public static final int BACK_LEFT_MOTOR = 12;
-            public static final int BACK_RIGHT_MOTOR = 19;
-            public static final int leftIntakeMotor = 17;
-            public static final int rightIntakeMotor = 18;
+            public static final int FRONT_LEFT_MOTOR = 8;
+            public static final int FRONT_RIGHT_MOTOR = 3;
+            public static final int BACK_LEFT_MOTOR = 1;
+            public static final int BACK_RIGHT_MOTOR = 4;
+            public static final int leftIntakeMotor = 5;
+            public static final int rightIntakeMotor = 6;
         }
 
         public static class PWM {
