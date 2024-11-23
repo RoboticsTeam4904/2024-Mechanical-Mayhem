@@ -104,7 +104,7 @@ public class RobotMap {
         public static class Voltage {
 
             public static final double intakeVolts = 0.8;
-            public static final double outtakeVolts = 4;
+            public static final double outtakeVolts = 3;
         }
     }
 
