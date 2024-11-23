@@ -19,6 +19,7 @@ public class TankDrive extends SubsystemBase {
                 DriveTrain.tankDrive(LeftSpeeds.get(), RightSpeeds.get());
             }
         };
+        command.addRequirements(this);
         return command;
     }
 }
