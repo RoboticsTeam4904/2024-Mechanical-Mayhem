@@ -26,7 +26,6 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import java.awt.Component;
 import java.io.File;
-
 import org.usfirst.frc4904.robot.subsystems.InOutSubsystem;
 // TODO: west coast
 // import org.usfirst.frc4904.robot.subsystems.SwerveSubsystem;
@@ -52,16 +51,16 @@ public class RobotMap {
             public static final int joystick = 2;
         }
 
-        // 2023 robot constants 
+        // 2023 robot constants
         // TODO: update ports for swerve
         public static class CANMotor {
 
-            public static final int FRONT_LEFT_MOTOR = -1;
-            public static final int FRONT_RIGHT_MOTOR = -1;
-            public static final int BACK_LEFT_MOTOR = -1;
-            public static final int BACK_RIGHT_MOTOR = -1;
-            public static final int leftIntakeMotor=-1;
-            public static final int rightIntakeMotor=-1;
+            public static final int FRONT_LEFT_MOTOR = 10;
+            public static final int FRONT_RIGHT_MOTOR = 11;
+            public static final int BACK_LEFT_MOTOR = 12;
+            public static final int BACK_RIGHT_MOTOR = 19;
+            public static final int leftIntakeMotor = 17;
+            public static final int rightIntakeMotor = 18;
         }
 
         public static class PWM {
@@ -101,10 +100,11 @@ public class RobotMap {
             public static final double MAX_TURN_SPEED = 360; //allowed max turn speed in degrees per second
             public static final double MAX_TURN_ACCELERATION = 180; //allowed max turn acceleration in degrees per second squared
         }
+
         public static class Voltage {
-        
-            public static final double intakeVolts=2;
-            public static final double outtakeVolts=2;
+
+            public static final double intakeVolts = 2;
+            public static final double outtakeVolts = 2;
         }
     }
 
@@ -143,9 +143,7 @@ public class RobotMap {
 
     public static class Component {
 
-
         //TODO: turn motors are NOT falcons and so can't use cantalons
-
 
         //encoders are dutycycle encoders, not standard can encoders
         public static InOutSubsystem take;
@@ -198,9 +196,22 @@ public class RobotMap {
     }
 
     public RobotMap() {
-        Component.leftIntakeMotor = new CustomCANSparkMax(Port.CANMotor.leftIntakeMotor, MotorType.kBrushless, false);
-        Component.rightIntakeMotor = new CustomCANSparkMax(Port.CANMotor.rightIntakeMotor, MotorType.kBrushless, true);
-        Component.take = new InOutSubsystem(Component.leftIntakeMotor, Component.rightIntakeMotor, Metrics.Voltage.intakeVolts, Metrics.Voltage.outtakeVolts);
+        Component.leftIntakeMotor = new CustomCANSparkMax(
+            Port.CANMotor.leftIntakeMotor,
+            MotorType.kBrushless,
+            false
+        );
+        Component.rightIntakeMotor = new CustomCANSparkMax(
+            Port.CANMotor.rightIntakeMotor,
+            MotorType.kBrushless,
+            true
+        );
+        Component.take = new InOutSubsystem(
+            Component.leftIntakeMotor,
+            Component.rightIntakeMotor,
+            Metrics.Voltage.intakeVolts,
+            Metrics.Voltage.outtakeVolts
+        );
 
         MotorController m_frontLeft = new CANTalonFX(1);
         MotorController m_rearLeft = new CANTalonFX(2);
@@ -245,7 +256,6 @@ public class RobotMap {
 
         // //TODO: fix invert type, talk to anna
 
-        
         // Component.FLdrive  = new CANTalonFX(Port.CANMotor.FRONT_LEFT_DRIVE);
         // Component.FLturn = new CustomCANSparkMax(Port.CANMotor.FRONT_LEFT_TURN, MotorType.kBrushless, false);
         // Component.FRdrive  = new CANTalonFX(Port.CANMotor.FRONT_RIGHT_DRIVE);
