@@ -44,7 +44,7 @@ public class InOutSubsystem extends SubsystemBase {
 
     public void setVoltage(Double voltage) {
         leftMotor.setVoltage(voltage);
-        rightMotor.setVoltage(voltage);
+        rightMotor.setVoltage(-voltage);
     }
 
     public Command c_outtakeBack() {
